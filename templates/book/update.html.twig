@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update book</title>
+</head>
+<body>
+    <h1>Update book</h1>
+    <form method="post" action="{{ path('update_book', {'ref': book.ref}) }}">
+        
+
+        <label for="title">title:</label>
+        <input type="text" id="title" name="title" value="{{ book.title }}" required><br>
+
+        <label for="published">published:</label>
+        <input type="number" id="published" name="published" value="{{ book.published }}" required><br>
+
+        <label for="PublicationDate">published date:</label>
+        <input type="date" id="PublicationDate" name="PublicationDate" value="{{ book.PublicationDate|date }}" required><br>
+
+        <label for="authorid">author id:</label>
+        <input type="number" id="authorid" name="authorid " value="{{ book.authorid }}" required><br>
+
+        <label for="category">category:</label>
+        <input type="text" id="category" name="category" value="{{ book.category}}" required><br>
+
+
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!-- templates/list.html.twig -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books List</title>
+</head>
+<body>
+    <h1>Books List</h1>
+    <table border="1">
+    <tr>
+        <th>ref</th>
+        <th>title</th>
+        <th>published</th>
+        <th>PublicationDate</th>
+        <th>authorid</th>
+        <th>category</th>
+    </tr>
+    {% for i in books %}
+        <tr>
+            <td>{{ i.ref }}</td>
+            <td> {{ i.title }}</td>
+            <td>{{ i.published}}</td>
+            <td> {{ i.PublicationDate|date}}</td>
+            <td> {{ i.authorid}}</td>
+            <td> {{ i.category}}</td>
+
+            <td> <a href="{{ path('book_remove', {'id': i.ref}) }}">delete</a></td>
+                        <td> <a href="{{ path('book_edit', {'ref': i.ref}) }}">update</a></td>
+
+         
+        </tr>
+    {% endfor %}
+</table>
+<h1>Books List</h1>
+    <table border="1">
+    <tr>
+        <th>ref</th>
+        <th>title</th>
+        <th>published</th>
+        <th>PublicationDate</th>
+        <th>authorid</th>
+        <th>category</th>
+    </tr>
+    {% for i in books1 %}
+        <tr>
+            <td>{{ i.ref }}</td>
+            <td> {{ i.title }}</td>
+            <td>{{ i.published}}</td>
+            <td> {{ i.PublicationDate|date}}</td>
+            <td> {{ i.authorid}}</td>
+            <td> {{ i.category}}</td>
+
+            <td> <a href="{{ path('book_remove', {'id': i.ref}) }}">delete</a></td>
+                        <td> <a href="{{ path('book_edit', {'ref': i.ref}) }}">update</a></td>
+
+         
+        </tr>
+    {% endfor %}
+</table>
+ <a href="{{ path('ajouterbook') }}">ajouter book</a>
+    
+    {% set publishedCount = 0 %}
+    {% set unpublishedCount = 0 %}
+
+    {% for book in books %}
+        {% if book.published == 1 %}
+            {% set publishedCount = publishedCount + 1 %}
+        {% else %}
+            {% set unpublishedCount = unpublishedCount + 1 %}
+        {% endif %}
+    {% endfor %}
+
+    <h2>Published Books</h2>
+    <p>Number of published books: {{ publishedCount }}</p>
+
+    <h2>Unpublished Books</h2>
+    <p>Number of unpublished books: {{ unpublishedCount }}</p>
+</body>
+</html>
